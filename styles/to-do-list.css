@@ -1,0 +1,47 @@
+.to-do-list {
+  margin: 0 auto;
+  max-width: 60rem;
+  border: 1px solid red;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.to-do-list__title {
+  font-family: 'Lobster Two', cursive;
+  font-size: 7rem;
+  margin-bottom: 3rem;
+}
+
+.to-do-list__form_type_add-task {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 95px 0 50px;
+  column-gap: 20px;
+  margin-bottom: 5rem;
+}
+
+.to-do-list__input_type_add-task {
+  width: 100%;
+  max-width: 30rem;
+  padding: 10px;
+  font-size: 1.8rem;
+  font-family: 'Lora', serif;
+  outline: none;
+  text-overflow: ellipsis;
+}
+
+.to-do-list__button_type_add-task {
+  font-family: 'Lora', serif;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  height: 100%;
+  padding: 7px 15px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.2);
+}
