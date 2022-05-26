@@ -25,8 +25,7 @@
 }
 
 .to-do-list__input_type_add-task {
-  width: 100%;
-  max-width: 30rem;
+  min-width: 30rem;
   padding: 10px;
   font-size: 1.8rem;
   font-family: 'Lora', serif;
@@ -44,4 +43,69 @@
   font-size: 1.8rem;
   font-weight: 600;
   box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.2);
+}
+
+
+.to-do-list__form-task-list,
+.to-do-list__task-list {
+  width: 100%;
+}
+
+.to-do-list__task-list {
+  max-height: 38rem;
+  overflow-y: auto;
+}
+
+.to-do-list__task-item {
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  margin-bottom: 3rem;
+}
+
+.to-do-list__input_task-item {
+  border: none;
+  border-bottom: 1px solid black;
+  height: 5rem;
+  width: 100%;
+  font-size: 1.8rem;
+  padding: 1rem;
+  font-family: 'Lora', serif;
+  outline: none;
+  text-overflow: ellipsis;
+}
+
+.to-do-list__input_task-item:focus {
+  background-color: yellow;
+}
+
+.to-do-list__task-item-number {
+  font-size: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 1rem;
+  background-color: white;
+  flex-shrink: 0;
+  font-family: 'Lora', serif;
+}
+
+.to-do-list__task-item-button {
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  height: 4rem;
+  width: 4rem;
+  flex-shrink: 0;
+  box-shadow: 0px 0px 15px -8px rgba(34, 60, 80, 0.6);
+}
+
+.to-do-list__icon {
+  width: 2rem;
+  height: 2rem;
 }
