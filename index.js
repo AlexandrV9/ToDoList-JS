@@ -7,21 +7,42 @@ const taskItemTemplate = document.querySelector('#task-item-template').content;
 let valueInputAddTask = '';
 
 let tasks = [
-  { text: 'Полить цветы' },
-  { text: 'Сходить в магазин' },
+  { id: 1, text: 'Полить цветы' },
+  { id: 2, text: 'Сходить в магазин' },
 ]
 
-
-tasks.forEach((item, index) => {
+const handleAddNewTask = (text, id) => {
   const newTaskItem = taskItemTemplate.querySelector('.to-do-list__task-item').cloneNode(true);
   const taskItemInput = newTaskItem.querySelector('.to-do-list__input_task-item');
   const taskItemNumber = newTaskItem.querySelector('.to-do-list__task-item-number');
+  const taskItemEditButton = newTaskItem.querySelector('.to-do-list__task-item-button_type_edit');
+  const taskItemDeleteButton = newTaskItem.querySelector('.to-do-list__task-item-button_type_delete');
 
-  taskItemInput.value = item.text;
-  taskItemNumber.textContent = 1;
+  taskItemDeleteButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    newTaskItem.remove();
 
-  taskList.append(newTaskItem);
+    tasks = tasks.filter((item) => { return Number(taskItemNumber.textContent) !== item.id });
+    tasks.forEach((item, index) => { item.id = index + 1 })
 
+    const currentListTaskItems = document.querySelectorAll('.to-do-list__task-item');
+    currentListTaskItems.forEach((item, index) => {
+      item.querySelector('.to-do-list__task-item-number').textContent = index + 1;
+    })
+
+  })
+
+  taskItemInput.value = text;
+  taskItemNumber.textContent = id;
+
+  return newTaskItem;
+}
+
+tasks.forEach((item, index) => {
+  const text = item.text;
+  const id = item.id;
+  const newTask = handleAddNewTask(text, id);
+  taskList.append(newTask);
 })
 
 inputAddTask.addEventListener('input', (event) => {
@@ -34,14 +55,13 @@ buttonSubmitAddTask.addEventListener('click', (event) => {
   if(!valueInputAddTask) {
     console.log('Поле пустое')
   } else {
-    const newTaskItem = taskItemTemplate.querySelector('.to-do-list__task-item').cloneNode(true);
-    const taskItemInput = newTaskItem.querySelector('.to-do-list__input_task-item');
-    const taskItemNumber = newTaskItem.querySelector('.to-do-list__task-item-number');
+    let id  = tasks.length + 1;
 
-    taskItemInput.value = valueInputAddTask;
-    taskItemNumber.textContent = 2;
+    tasks.push({ id, text: valueInputAddTask })
 
-    taskList.append(newTaskItem);
+    const newTask = handleAddNewTask(valueInputAddTask, id);
+
+    taskList.append(newTask);
 
     inputAddTask.value = "";
     valueInputAddTask = "";
