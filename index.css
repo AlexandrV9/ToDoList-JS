@@ -41,6 +41,10 @@ button:hover {
   background-color: yellow;
 }
 
+.active {
+  background-color: yellow;
+}
+
 /* 
 font-family: 'Lobster Two', cursive;
 font-family: 'Lora', serif;

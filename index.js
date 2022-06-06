@@ -28,8 +28,30 @@ const handleAddNewTask = (text, id) => {
     const currentListTaskItems = document.querySelectorAll('.to-do-list__task-item');
     currentListTaskItems.forEach((item, index) => {
       item.querySelector('.to-do-list__task-item-number').textContent = index + 1;
-    })
+    });
 
+  })
+
+  taskItemEditButton.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    taskItemEditButton.classList.add('active');
+    taskItemInput.removeAttribute('disabled');
+    taskItemInput.focus();
+
+    taskItemInput.addEventListener('blur', () => {
+      taskItemInput.setAttribute('disabled', true);
+      taskItemEditButton.classList.remove('active');
+    }, {
+      once: true,
+    });
+
+    taskItemInput.addEventListener('keydown', (event) => {
+      if(event.code === 'Enter') {
+        taskItemInput.setAttribute('disabled', true);
+        taskItemEditButton.classList.remove('active');
+      }
+    })
   })
 
   taskItemInput.value = text;
